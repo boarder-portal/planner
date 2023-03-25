@@ -1,0 +1,19 @@
+@layer component {
+  .homeLink {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .content {
+    width: var(--layoutWidth);
+    padding: 0 var(--layoutPadding);
+  }
+
+  .root {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid var(--grey4);
+  }
+}

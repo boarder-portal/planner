@@ -1,0 +1,9 @@
+.idea
+
+node_modules
+
+dist
+
+/*.env
+!/.example.env
+!/.secret.example.env

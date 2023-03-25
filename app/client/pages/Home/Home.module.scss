@@ -1,0 +1,12 @@
+@import "client/styles/mixins.scss";
+
+.plusIcon {
+  font-size: 16px;
+  cursor: pointer;
+
+  @include colored(var(--blue3), var(--blue4));
+}
+
+.root {
+  flex-grow: 1;
+}

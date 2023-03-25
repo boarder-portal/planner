@@ -1,0 +1,21 @@
+@layer component {
+  .root {
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+    padding: 0 8px;
+    outline: none;
+    background-color: var(--grey1);
+    border: 1px solid var(--grey1);
+    border-radius: 4px;
+    transition: 0.1s ease;
+
+    &::placeholder {
+      color: var(--grey3);
+    }
+
+    &:focus {
+      border-color: var(--blue2);
+    }
+  }
+}

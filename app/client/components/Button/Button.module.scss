@@ -1,0 +1,16 @@
+@import "client/styles/mixins.scss";
+
+@layer component {
+  .root {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    @include backgroundColored(var(--blue2), var(--blue3));
+  }
+}

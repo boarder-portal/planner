@@ -1,0 +1,9 @@
+@import "client/styles/mixins.scss";
+
+@layer component {
+  .root {
+    cursor: pointer;
+
+    @include colored(var(--purple3), var(--purple4));
+  }
+}
