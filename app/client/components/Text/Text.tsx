@@ -7,13 +7,13 @@ interface Props extends Omit<ComponentProps<'span'>, 'ref'> {
   className?: string;
   size?: 's' | 'm' | 'l' | 'xl' | 'xxl';
   weight?: 'normal' | 'bold';
-  color?: 'normal' | 'error';
+  color?: 'inherit' | 'normal' | 'error';
   withEllipsis?: boolean;
   children?: ReactNode;
 }
 
 const Text: FC<Props> = forwardRef<HTMLSpanElement | null, Props>((props, ref) => {
-  const { className, size = 'm', weight = 'normal', color = 'normal', withEllipsis, children, ...restProps } = props;
+  const { className, size = 'm', weight = 'normal', color = 'inherit', withEllipsis, children, ...restProps } = props;
 
   return (
     <span

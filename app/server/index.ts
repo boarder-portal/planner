@@ -11,6 +11,7 @@ import { session } from 'server/utilities/session';
 import { client as redisClient } from 'server/utilities/redis';
 
 import UserModel from 'server/db/models/user';
+import { migrate } from 'server/db/migrations/migrator';
 
 import { app, server } from 'server/server';
 import api from 'server/api';
@@ -61,7 +62,7 @@ app.use(async (ctx) => {
 });
 
 (async () => {
-  await redisClient.connect();
+  await Promise.all([redisClient.connect(), migrate()]);
 
   indexHtmlContents = await fs.readFile(indexHtmlPath, 'utf8');
 

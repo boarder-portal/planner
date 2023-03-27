@@ -2,6 +2,7 @@ import { FC, FormEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import authHttpClient from 'client/utilities/HttpClient/AuthHttpClient';
+import { getClientTimezone } from 'client/utilities/date';
 
 import usePromise from 'client/hooks/usePromise';
 import useSharedStoreValue from 'client/hooks/useSharedStoreValue';
@@ -32,6 +33,7 @@ const RegisterPage: FC = () => {
       {
         login,
         password,
+        timezone: getClientTimezone(),
       },
       signal,
     ),

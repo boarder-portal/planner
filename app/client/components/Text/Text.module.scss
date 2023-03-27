@@ -32,6 +32,10 @@
   }
 
   .color {
+    &_inherit {
+      color: inherit;
+    }
+
     &_normal {
       color: var(--grey6);
     }

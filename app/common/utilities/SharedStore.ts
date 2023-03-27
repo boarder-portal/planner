@@ -1,7 +1,7 @@
 import forEach from 'lodash/forEach';
 import { createContext } from 'react';
 
-import { User } from 'server/db/models/user';
+import { User } from 'common/types/user';
 
 export interface SharedStoreValues {
   user: User | null;

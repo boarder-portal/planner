@@ -1,7 +1,7 @@
 import { Middleware as KoaMiddleware, ParameterizedContext } from 'koa';
 import expressSession from 'express-session';
 
-import { User } from 'server/db/models/user';
+import { User } from 'common/types/user';
 
 export interface State {
   user: User | null;

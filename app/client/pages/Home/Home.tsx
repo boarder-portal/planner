@@ -16,11 +16,13 @@ const Home: FC = () => {
   const content = useMemo(() => {
     if (!user) {
       return (
-        <Text>
-          {'Чтобы посмотреть расписание, '}
+        <span>
+          <Text>Чтобы посмотреть расписание, </Text>
 
-          <Link to={urls.login}>необходимо авторизоваться</Link>
-        </Text>
+          <Link to={urls.login}>
+            <Text>необходимо авторизоваться</Text>
+          </Link>
+        </span>
       );
     }
 

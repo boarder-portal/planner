@@ -7,3 +7,5 @@ dist
 /*.env
 !/.example.env
 !/.secret.example.env
+
+app/server/db/version

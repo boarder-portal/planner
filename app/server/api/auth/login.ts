@@ -1,6 +1,7 @@
 import { Middleware } from 'server/types/koa';
+import { User } from 'common/types/user';
 
-import UserModel, { User } from 'server/db/models/user';
+import UserModel from 'server/db/models/user';
 
 export interface LoginRequest {
   login: string;
