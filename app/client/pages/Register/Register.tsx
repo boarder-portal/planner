@@ -10,6 +10,7 @@ import Flex from 'client/components/Flex/Flex';
 import Heading from 'client/components/Heading/Heading';
 import Input from 'client/components/Input/Input';
 import Button from 'client/components/Button/Button';
+import Text from 'client/components/Text/Text';
 
 import styles from './Register.module.scss';
 
@@ -61,9 +62,13 @@ const RegisterPage: FC = () => {
 
         <Input required type="password" placeholder="Пароль" value={password} onChange={setPassword} />
 
-        <Button disabled={isLoading}>Регистрация</Button>
+        <Button disabled={isLoading}>
+          <Text>Регистрация</Text>
+        </Button>
 
-        <span className={styles.error}>{isError ? 'Ошибка регистрации' : '\u00a0'}</span>
+        <Text className={styles.error} color="error">
+          {isError ? 'Ошибка регистрации' : '\u00a0'}
+        </Text>
       </form>
     </Flex>
   );

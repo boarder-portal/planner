@@ -9,6 +9,7 @@ import useSharedStoreValue from 'client/hooks/useSharedStoreValue';
 
 import Flex from 'client/components/Flex/Flex';
 import Link from 'client/components/Link/Link';
+import Text from 'client/components/Text/Text';
 
 import styles from './Header.module.scss';
 
@@ -28,8 +29,10 @@ const Header: FC<Props> = () => {
   return (
     <header className={styles.root}>
       <Flex className={styles.content} alignItems="center" justifyContent="spaceBetween" between={4}>
-        <Link className={styles.homeLink} to="/">
-          Planner
+        <Link to={urls.home}>
+          <Text size="xl" weight="bold">
+            Planner
+          </Text>
         </Link>
 
         {user ? (

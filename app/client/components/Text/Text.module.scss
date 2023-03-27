@@ -1,0 +1,50 @@
+@layer component {
+  .size {
+    &_s {
+      font-size: 12px;
+    }
+
+    &_m {
+      font-size: 14px;
+    }
+
+    &_l {
+      font-size: 16px;
+    }
+
+    &_xl {
+      font-size: 24px;
+    }
+
+    &_xxl {
+      font-size: 32px;
+    }
+  }
+
+  .weight {
+    &_normal {
+      font-weight: 400;
+    }
+
+    &_bold {
+      font-weight: 700;
+    }
+  }
+
+  .color {
+    &_normal {
+      color: var(--grey6);
+    }
+
+    &_error {
+      color: var(--red3);
+    }
+  }
+
+  .withEllipsis {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
