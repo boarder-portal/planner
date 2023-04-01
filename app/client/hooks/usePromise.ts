@@ -4,12 +4,14 @@ import { AnyAsyncValue } from 'client/types/async';
 
 import useImmutableCallback from 'client/hooks/useImmutableCallback';
 
-export type UsePromise<T> = AnyAsyncValue<T> & {
-  run(): Promise<T>;
+export type UsePromise<Result, Args extends unknown[]> = AnyAsyncValue<Result> & {
+  run(...args: Args): Promise<Result>;
 };
 
-export default function usePromise<T>(getPromise: (signal: AbortSignal) => Promise<T>): UsePromise<T> {
-  const [promiseValue, setPromiseValue] = useState<AnyAsyncValue<T>>({
+export default function usePromise<Result, Args extends unknown[]>(
+  getPromise: (signal: AbortSignal, ...args: Args) => Promise<Result>,
+): UsePromise<Result, Args> {
+  const [promiseValue, setPromiseValue] = useState<AnyAsyncValue<Result>>({
     value: null,
     isLoading: false,
     isSuccess: false,
@@ -26,7 +28,7 @@ export default function usePromise<T>(getPromise: (signal: AbortSignal) => Promi
 
   return {
     ...promiseValue,
-    run: useImmutableCallback(async () => {
+    run: useImmutableCallback(async (...args) => {
       abortControllerRef.current?.abort();
 
       const controller = new AbortController();
@@ -42,7 +44,7 @@ export default function usePromise<T>(getPromise: (signal: AbortSignal) => Promi
           error: null,
         });
 
-        const result = await getPromise(controller.signal);
+        const result = await getPromise(controller.signal, ...args);
 
         setPromiseValue({
           value: result,

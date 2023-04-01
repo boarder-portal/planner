@@ -3,7 +3,7 @@ import { DAY, HOUR } from 'common/constants/date';
 import { Schedule } from 'common/types/schedule';
 
 export const DEFAULT_SCHEDULE: Schedule = {
-  tags: [],
+  actionTags: [],
   actions: [],
   dayTemplates: [],
   weekGoals: [],
