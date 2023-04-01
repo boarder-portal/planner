@@ -1,5 +1,5 @@
-import { FC, FormEvent, useCallback, useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { FC, FormEvent, memo, useCallback, useEffect, useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { urls } from 'client/constants/urls';
 
@@ -16,10 +16,12 @@ import Text from 'client/components/Text/Text';
 
 import styles from './Login.module.scss';
 
-const LoginPage: FC = () => {
+const Login: FC = () => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [, setUser] = useSharedStoreValue('user');
+
+  const location = useLocation();
 
   const loginInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -45,10 +47,12 @@ const LoginPage: FC = () => {
 
       const { user } = await loginRequest();
 
+      const searchParams = new URLSearchParams(location.search);
+
       setUser(user);
-      navigate(urls.home);
+      navigate(searchParams.get('from') ?? urls.home);
     },
-    [loginRequest, navigate, setUser],
+    [location.search, loginRequest, navigate, setUser],
   );
 
   useEffect(() => {
@@ -76,4 +80,4 @@ const LoginPage: FC = () => {
   );
 };
 
-export default LoginPage;
+export default memo(Login);

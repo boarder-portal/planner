@@ -1,4 +1,4 @@
-import { FC, FormEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { FC, FormEvent, memo, useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import authHttpClient from 'client/utilities/HttpClient/AuthHttpClient';
@@ -15,7 +15,7 @@ import Text from 'client/components/Text/Text';
 
 import styles from './Register.module.scss';
 
-const RegisterPage: FC = () => {
+const Register: FC = () => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [, setUser] = useSharedStoreValue('user');
@@ -76,4 +76,4 @@ const RegisterPage: FC = () => {
   );
 };
 
-export default RegisterPage;
+export default memo(Register);

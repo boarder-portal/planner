@@ -4,6 +4,8 @@ export interface ActionTag {
   id: string;
   name: string;
   color: string;
-  icon: string;
+  icon?: string | null;
   goals: Goal[];
 }
+
+export type ActionTagPayload = Omit<ActionTag, 'id'>;

@@ -6,7 +6,7 @@ import { WeekGoal } from 'common/types/goal';
 import { DaySchedule } from 'common/types/daySchedule';
 
 export interface Schedule {
-  tags: ActionTag[];
+  actionTags: ActionTag[];
   actions: Action[];
   dayTemplates: DayTemplate[];
   weekGoals: WeekGoal[];

@@ -9,8 +9,14 @@ class HttpClient {
     };
   }
 
+  protected async fetch(input: RequestInfo | URL, init?: RequestInit) {
+    const rawResponse = await fetch(input, init);
+
+    return rawResponse.json();
+  }
+
   protected async get(url: string, params?: any, signal?: AbortSignal) {
-    const rawResponse = await fetch(`${this.getBaseUrl()}${url}?${new URLSearchParams(params)}`, {
+    return this.fetch(`${this.getBaseUrl()}${url}?${new URLSearchParams(params)}`, {
       ...this.getOptions(),
       method: 'GET',
       headers: {
@@ -18,12 +24,10 @@ class HttpClient {
       },
       signal,
     });
-
-    return rawResponse.json();
   }
 
   protected async post(url: string, data?: any, signal?: AbortSignal) {
-    const rawResponse = await fetch(this.getBaseUrl() + url, {
+    return this.fetch(this.getBaseUrl() + url, {
       ...this.getOptions(),
       method: 'POST',
       headers: {
@@ -33,8 +37,6 @@ class HttpClient {
       body: JSON.stringify(data),
       signal,
     });
-
-    return rawResponse.json();
   }
 }
 

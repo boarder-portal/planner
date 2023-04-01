@@ -55,10 +55,7 @@ const tagSchema = new Schema(
       type: String,
       required: true,
     },
-    icon: {
-      type: String,
-      required: true,
-    },
+    icon: String,
     goals: {
       type: [goalSchema],
       required: true,
@@ -187,7 +184,7 @@ const scheduleSettingsSchema = new Schema(
 
 const scheduleSchema = new Schema(
   {
-    tags: {
+    actionTags: {
       type: [tagSchema],
       required: true,
     },

@@ -22,19 +22,13 @@ export async function migrate(toVersion?: number): Promise<void> {
     currentVersion = 0;
   }
 
-  let version: number;
-
-  if (typeof toVersion === 'undefined') {
-    version = migrations.length;
-  } else {
-    version = toVersion;
-  }
-
-  console.log(`Migrating ${currentVersion} -> ${version}`);
+  const version = toVersion ?? migrations.length;
 
   if (version === currentVersion) {
     return;
   }
+
+  console.log(`Migrating ${currentVersion} -> ${version}`);
 
   if (version > currentVersion) {
     for (let i = currentVersion; i < version; i++) {

@@ -6,6 +6,7 @@ import authHttpClient from 'client/utilities/HttpClient/AuthHttpClient';
 
 import usePromise from 'client/hooks/usePromise';
 import useSharedStoreValue from 'client/hooks/useSharedStoreValue';
+import useLoginLink from 'client/hooks/useLoginLink';
 
 import Flex from 'client/components/Flex/Flex';
 import Link from 'client/components/Link/Link';
@@ -17,6 +18,8 @@ interface Props {}
 
 const Header: FC<Props> = () => {
   const [user, setUser] = useSharedStoreValue('user');
+
+  const loginLink = useLoginLink();
 
   const { run: logout } = usePromise((signal) => authHttpClient.logout(signal));
 
@@ -40,7 +43,7 @@ const Header: FC<Props> = () => {
         ) : (
           <Flex between={4}>
             <Link to={urls.register}>Регистрация</Link>
-            <Link to={urls.login}>Войти</Link>
+            <Link to={loginLink}>Войти</Link>
           </Flex>
         )}
       </Flex>

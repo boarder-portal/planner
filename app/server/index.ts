@@ -49,11 +49,13 @@ app.use(api.routes());
 app.use(api.allowedMethods());
 app.use(async (ctx) => {
   const sharedStore = new SharedStore();
+  const indexHtml =
+    process.env.NODE_ENV === 'production' ? indexHtmlContents : await fs.readFile(indexHtmlPath, 'utf8');
 
   sharedStore.setValue('user', ctx.state.user);
 
   ctx.type = 'text/html';
-  ctx.body = indexHtmlContents.replace(
+  ctx.body = indexHtml.replace(
     '"__STORE_VALUES__"',
     `
     window.__STORE_VALUES__ = ${JSON.stringify(sharedStore.toJSON()).replace(/</g, '\\u003c')};

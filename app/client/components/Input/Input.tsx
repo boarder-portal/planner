@@ -1,4 +1,4 @@
-import { ChangeEvent, ComponentProps, forwardRef, useCallback } from 'react';
+import { ChangeEvent, ComponentProps, forwardRef, memo, useCallback } from 'react';
 import classNames from 'classnames';
 
 import styles from './Input.module.scss';
@@ -31,4 +31,4 @@ const Input = forwardRef<HTMLInputElement | null, Props>((props, ref) => {
 
 Input.displayName = 'Input';
 
-export default Input;
+export default memo(Input);

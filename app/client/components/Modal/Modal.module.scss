@@ -1,0 +1,55 @@
+@import "client/styles/mixins";
+
+@layer component {
+  .closeIcon {
+    @include colored(var(--red3), var(--red4));
+
+    cursor: pointer;
+  }
+
+  .header {
+    padding: 20px;
+  }
+
+  .content {
+    padding: 0 20px 20px;
+  }
+
+  .container {
+    background-color: var(--white);
+
+    @include desktop {
+      min-width: var(--containerMinWidth);
+      max-height: 90vh;
+      border-radius: 8px;
+    }
+
+    @include mobile {
+      position: absolute;
+      inset: 0;
+    }
+  }
+
+  .overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(1.15);
+
+    &.open {
+      z-index: 1000;
+      pointer-events: auto;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    @include desktop {
+      transition: all 0.15s ease-in-out;
+    }
+  }
+}

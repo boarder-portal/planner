@@ -1,0 +1,20 @@
+@import "client/styles/mixins";
+
+.deleteIcon {
+  @include colored(var(--red3), var(--red4));
+
+  cursor: pointer;
+}
+
+.tag {
+  @include borderColored(var(--black), var(--blue3));
+
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 2px solid;
+  cursor: pointer;
+}
+
+.tags {
+  margin-top: 12px;
+}

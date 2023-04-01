@@ -1,4 +1,4 @@
-import { ComponentProps, forwardRef } from 'react';
+import { ComponentProps, forwardRef, memo } from 'react';
 import classNames from 'classnames';
 
 import styles from './Flex.module.scss';
@@ -52,4 +52,4 @@ const Flex = forwardRef<HTMLDivElement | null, Props>((props, ref) => {
 
 Flex.displayName = 'Flex';
 
-export default Flex;
+export default memo(Flex);

@@ -60,6 +60,48 @@ const migrations: Migration[] = [
       );
     },
   },
+  {
+    async up() {
+      const UserModel = db.model(
+        'user-migration-1',
+        new Schema({
+          schedule: Object,
+        }),
+        'users',
+      );
+
+      await UserModel.updateMany({}, [
+        {
+          $set: {
+            'schedule.actionTags': '$schedule.tags',
+          },
+        },
+        {
+          $unset: ['schedule.tags'],
+        },
+      ]);
+    },
+    async down() {
+      const UserModel = db.model(
+        'user-migration-1',
+        new Schema({
+          schedule: Object,
+        }),
+        'users',
+      );
+
+      await UserModel.updateMany({}, [
+        {
+          $set: {
+            'schedule.tags': '$schedule.actionTags',
+          },
+        },
+        {
+          $unset: ['schedule.actionTags'],
+        },
+      ]);
+    },
+  },
 ];
 
 export default migrations;

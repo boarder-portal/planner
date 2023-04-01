@@ -1,0 +1,18 @@
+@import "client/styles/mixins";
+
+@include desktop {
+  .submit {
+    width: 100px;
+    align-self: flex-start;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.root {
+  --containerMinWidth: 320px;
+}
